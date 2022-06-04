@@ -2,9 +2,9 @@ import { buildSchema } from 'graphql'
 
 export const schema = buildSchema(`
     scalar Object
-    
+
     type Query {
-        prints: PrintsResponse
+        prints(input: PrintsInput!): PrintsResponse
     }
     type PrintsResponse {
         info: PrintsResponseInfo
@@ -17,6 +17,17 @@ export const schema = buildSchema(`
         pages: Int!
         page: Int
         next: String
+    }
+
+    input PrintsInput {
+        resource: ResourceTypes
+        limit: Int
+        page: Int
+    }
+
+    enum ResourceTypes {
+        OBJECT
+        PERSON
     }
 `)
 
