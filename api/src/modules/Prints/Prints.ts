@@ -38,7 +38,7 @@ export class PrintsModule {
   }
 
   static resolver = {
-    prints: async ({}, context) => {
+    prints: async (input: PrintsInput, context) => {
       try {
         return PrintsModule.handler(context.request, context.response)
       } catch (err) {
