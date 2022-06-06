@@ -6,5 +6,8 @@
   "name": "heni-challenge",
   "version": "1.0.0",
   "license": "MIT",
-  "author": "Italo Moraes"
+  "author": "Italo Moraes",
+  "dependencies": {
+    "ts-transformer-keys": "^0.4.3"
+  }
 }

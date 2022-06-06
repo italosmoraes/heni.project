@@ -1,11 +1,11 @@
 import { Image } from './Image'
 import { People } from './People'
 
-export interface Object {
+export class ObjectResource {
   division: string
   rank: number
   id: number
-  verificationleveldescription: string // 'Good. Object is well described and information is vetted'
+  verificationleveldescription: string // e.g. 'Good. Object is well described and information is vetted'
   images: Image[]
   imagecount: number
   classification: string
@@ -16,4 +16,6 @@ export interface Object {
   department: string
   people: People[]
   url: string
+
+  static queryFields: 'division,rank,id,verificationleveldescription,images,classification'
 }
