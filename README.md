@@ -55,7 +55,17 @@ yarn test
 ```
 
 
-### Potential improvements
+### Potential improvements and notes
 
-[ ] include an `env` file that reads the configuration vars from the server, for security and management
+[ ] include an `env` file that reads the configuration vars from the server, for security and management. Left as vars here for easier setup and re-run of this project
 [ ] add proper data models for each of the objects one can query from the api
+[ ] user https://typegraphql.com/ for integrating graphql with typescript in a smoother way and building the schema from type annotations
+[ ] make the resource_types representation be classes to be used for persisting and other logic, instead of interfaces
+(!) the resolving of rank, sort, classification is done using features from the provided harvard api. There could be a case for just querying raw data and then resolving within out this api, independently of what was provided by their api.
+
+### Notes on the task
+
+
+(!) the description of 'Prints' does not relate to anything in the harvard lib documentation, which makes it confusing since one need to start infering if what is meant is some of the categories available, which may be called Print because they have images, or any of the `resource types` available are considered prints
+
+[] Time spent: 2hs setup, 6hs from node express with routes version to the a graphql version

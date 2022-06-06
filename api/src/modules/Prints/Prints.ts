@@ -20,7 +20,7 @@ export class PrintsModule {
 
       // TODO user the q query field to filter the classification. because it uses a string description field
       // https://github.com/harvardartmuseums/api-docs/blob/master/sections/person.md
-      // TODO user the same to filter out elements with no images
+      // TODO user the same to filter out elements with no
 
       // TODO programatically put together the api query url based on resource_type and provided fields
       const queryParams = {
@@ -35,13 +35,6 @@ export class PrintsModule {
       // const query = `size=${limit}&page=${cursor}&apikey=${API_KEY}&titled=dog&fields=objectnumber,title,dated`
 
       const response = await axios.get(`${PRINTS_API}/${ResourceTypes.OBJECT}?${query}`)
-
-      // --- Resolving results
-
-      // ordered by rank
-      // descending
-      // that have images
-      // and have been verified to the ‘Best’ standard.
 
       return response.data
     } catch (err) {
