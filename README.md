@@ -24,7 +24,9 @@ This is your api key: `c28e4be0-4c0e-11ea-90d6-25d9a9fe80fc`
 
 ### Notes on the solution
 
-- Initially API was written con
+- A nodejs express server exposing a graphql endpoint
+- The server only resolves the items classified as Prints from the harvardartmuseums api
+- A few notes on TODOs and improvements are written across the codebase
 
 ### Environment
 ---------------

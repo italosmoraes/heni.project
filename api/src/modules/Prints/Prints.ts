@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Request } from 'express'
 import axios from 'axios'
 import { API_KEY, PRINTS_API } from '../../../config/constants'
 import { ResourceTypes } from './types/ResourceTypes'
@@ -11,12 +11,13 @@ const CLASSIFICATION = 'Prints'
  *  Returns only results for which there are images
  */
 export class PrintsModule {
-  static handler = async (req: Request, input: PrintsInput) => {
+  static handler = async (input: PrintsInput) => {
     try {
       const limit = input.limit || 5
       const cursor = input.page || 0
 
       // --- Hardcoded filtering/pagination options
+      // TOIMPROVE allow for filtering/pagination options from graphql query
 
       const sortBy = 'rank'
       const orderBy = 'asc' // asc or desc
@@ -26,19 +27,9 @@ export class PrintsModule {
 
       // --- mount query
 
-      // TODO programatically put together the api query url based on resource_type and provided fields
-      const queryParams = {
-        size: limit,
-        page: cursor,
-        apikey: API_KEY
-      }
-
       // (!) the api simply ignores query fields that dont exist for the given resource_type
-      // const query = `size=${limit}&page${cursor}&apikey=${API_KEY}`
-      // const query = `size=${limit}&page${cursor}&apikey=${API_KEY}&sort=${sortBy}&sortorder=${orderBy}`
+      // TOIMPROVE programatically put together the api query url based on resource_type and provided fields
       const query = `size=${limit}&page=${cursor}&apikey=${API_KEY}&sort=${sortBy}&sortorder=${orderBy}&hasImage=${hasImage}&classification=${CLASSIFICATION}&q=${filterQuery}`
-      // const query = `size=${limit}&page${cursor}&apikey=${API_KEY}&sort=${sortBy}&sortorder=${orderBy}&hasImage=${hasImage}&q=${filterQuery}&fields=${'division,rank,id'}`
-      // const query = `size=${limit}&page=${cursor}&apikey=${API_KEY}&titled=dog&fields=objectnumber,title,dated`
 
       const response = await axios.get(`${PRINTS_API}/${ResourceTypes.OBJECT}?${query}`)
 
@@ -71,10 +62,10 @@ export class PrintsModule {
 
   static resolver = {
     // TODO better resolve of input format. Using { input: ... } does not match graphql types
-    prints: async ({ input }, context) => {
+    prints: async ({ input }) => {
       try {
         console.log(input)
-        return PrintsModule.handler(context.request, input)
+        return PrintsModule.handler(input)
       } catch (err) {
         console.log(err)
         throw err

@@ -11,10 +11,12 @@ const FeedContainer = styled.div`
   justify-content: center;
   align-content: center;
   padding: 10px;
+  max-width: 75%;
 `
 
 const LoadMoreBtn = styled.button`
   margin: 10px;
+  height: 40px;
 `
 
 const LOADING_LIMIT = 10
@@ -22,7 +24,6 @@ export const Feed = () => {
   const { loading, error, data, refetch } = useQuery<PrintsResponse>(PRINTS_QUERY, {
     variables: {
       input: {
-        resource: 'OBJECT', // TODO remove since we are only querying OBJECTs in the api
         limit: LOADING_LIMIT,
         page: 1
       }
@@ -44,7 +45,6 @@ export const Feed = () => {
   const loadMore = () => {
     refetch({
       input: {
-        resource: 'OBJECT', // TODO remove since we are only querying OBJECTs in the api
         limit: LOADING_LIMIT,
         page: nextPage
       }

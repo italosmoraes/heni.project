@@ -18,7 +18,6 @@ const FeedItemContainer = styled.div`
   padding: 25px;
   border: 2px solid palevioletred;
   border-radius: 3px;
-  max-width: 75%;
 `
 
 export const FeedItem = (props: FeedItemProps) => {
