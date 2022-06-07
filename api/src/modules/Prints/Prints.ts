@@ -4,6 +4,8 @@ import { API_KEY, PRINTS_API } from '../../../config/constants'
 import { ResourceTypes } from './types/ResourceTypes'
 import { PrintsInput } from './types/inputTypes'
 
+const CLASSIFICATION = 'Prints'
+
 /**
  *  Resolves the feed of all public items classified as “Prints”, from harvardartmuseums api
  *  Returns only results for which there are images
@@ -12,7 +14,7 @@ export class PrintsModule {
   static handler = async (req: Request, input: PrintsInput) => {
     try {
       const limit = input.limit || 5
-      const cursor = input.page
+      const cursor = input.page || 0
 
       // --- Hardcoded filtering/pagination options
 
@@ -21,7 +23,6 @@ export class PrintsModule {
       const verificationLevelFilter = 'best'
       const filterQuery = `verificationleveldescription:${verificationLevelFilter}` // Filter by Prints classification
       const hasImage = 1
-      const classification = 'Prints'
 
       // --- mount query
 
@@ -35,7 +36,7 @@ export class PrintsModule {
       // (!) the api simply ignores query fields that dont exist for the given resource_type
       // const query = `size=${limit}&page${cursor}&apikey=${API_KEY}`
       // const query = `size=${limit}&page${cursor}&apikey=${API_KEY}&sort=${sortBy}&sortorder=${orderBy}`
-      const query = `size=${limit}&page${cursor}&apikey=${API_KEY}&sort=${sortBy}&sortorder=${orderBy}&hasImage=${hasImage}&classification=${classification}&q=${filterQuery}`
+      const query = `size=${limit}&page${cursor}&apikey=${API_KEY}&sort=${sortBy}&sortorder=${orderBy}&hasImage=${hasImage}&classification=${CLASSIFICATION}&q=${filterQuery}`
       // const query = `size=${limit}&page${cursor}&apikey=${API_KEY}&sort=${sortBy}&sortorder=${orderBy}&hasImage=${hasImage}&q=${filterQuery}&fields=${'division,rank,id'}`
       // const query = `size=${limit}&page=${cursor}&apikey=${API_KEY}&titled=dog&fields=objectnumber,title,dated`
 
