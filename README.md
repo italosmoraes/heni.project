@@ -49,9 +49,34 @@ On the command line:
 npx tsc
 ```
 
+#### API:
+----
+...while in the api folder
+
+```
+yarn
+```
+
+```
+yarn dev
+```
+
+#### Web-App:
+----
+...while in the web-app folder
+
+```
+yarn
+```
+
+```
+yarn start
+```
 
 ### To run test suite:
 --------------------
+
+API:
 ```
 nvm use
 
@@ -63,6 +88,7 @@ yarn test
 
 ### Potential improvements and notes
 
+On the API:
 - include an `env` file that reads the configuration vars from the server, for security and management. Left as vars here for easier setup and re-run of this project
 - add proper data models for each of the objects one can query from the api
 - user https://typegraphql.com/ for integrating graphql with typescript in a smoother way and building the schema from type annotations
@@ -72,9 +98,18 @@ yarn test
 - Find a better way to define `outputFields` for each resource type
 - Improve how one resolves the types coming from the harvard api
 
+On the web-app:
+- better align the types with the api one. maybe making a shared types library
+- better handling of the FeedItem size as per screen sizes and image sizes
+- improve visual design of components
+- pull to load more feature
+- better clean up create-react-app files
+- standardise styles to be re-used across components
+- create a store using mobx or some other patterns which is not redux, to keep the feeds data
+
 ### Notes on the task
 
 
 (!) the description of 'Prints' does not relate to anything in the harvard lib documentation, unless on searches through the available query fields within the resource types to find which ones have that option.This makes it confusing since one need to start infering if what is meant is some of the categories available, which may be called Print because they have images, or any of the `resource types` available are considered prints
 
-[] Time spent: 2hs setup, 6hs from node express with routes version to the a graphql version, 1.5hs refining graphql endpoint,
+[] Time spent: 2hs setup, 6hs from node express with routes version to the a graphql version, 1.5hs refining graphql endpoint, about 4hs on building the Feed
