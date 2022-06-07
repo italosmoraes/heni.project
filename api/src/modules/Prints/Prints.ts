@@ -36,7 +36,7 @@ export class PrintsModule {
       // (!) the api simply ignores query fields that dont exist for the given resource_type
       // const query = `size=${limit}&page${cursor}&apikey=${API_KEY}`
       // const query = `size=${limit}&page${cursor}&apikey=${API_KEY}&sort=${sortBy}&sortorder=${orderBy}`
-      const query = `size=${limit}&page${cursor}&apikey=${API_KEY}&sort=${sortBy}&sortorder=${orderBy}&hasImage=${hasImage}&classification=${CLASSIFICATION}&q=${filterQuery}`
+      const query = `size=${limit}&page=${cursor}&apikey=${API_KEY}&sort=${sortBy}&sortorder=${orderBy}&hasImage=${hasImage}&classification=${CLASSIFICATION}&q=${filterQuery}`
       // const query = `size=${limit}&page${cursor}&apikey=${API_KEY}&sort=${sortBy}&sortorder=${orderBy}&hasImage=${hasImage}&q=${filterQuery}&fields=${'division,rank,id'}`
       // const query = `size=${limit}&page=${cursor}&apikey=${API_KEY}&titled=dog&fields=objectnumber,title,dated`
 
