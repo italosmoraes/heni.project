@@ -99,6 +99,7 @@ On the API:
 (!) the resolving of rank, sort, classification is done using features from the provided harvard api. There could be a case for just querying raw data and then resolving within out this api, independently of what was provided by their api.
 - Find a better way to define `outputFields` for each resource type
 - Improve how one resolves the types coming from the harvard api
+- better handle incorrect FE input. At the moment the api just injects defaults
 
 On the web-app:
 - better align the types with the api one. maybe making a shared types library
