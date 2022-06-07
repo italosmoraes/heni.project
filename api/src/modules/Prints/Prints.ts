@@ -34,7 +34,6 @@ export class PrintsModule {
       const response = await axios.get(`${PRINTS_API}/${ResourceTypes.OBJECT}?${query}`)
 
       // --- Hydrating response
-      // Tryring to use 'fields' query, is returning empty for some items (e.g. images, imageCount)
 
       const hydratedRecords = response.data.records.map((item) => ({
         id: item.id,
@@ -64,7 +63,6 @@ export class PrintsModule {
     // TODO better resolve of input format. Using { input: ... } does not match graphql types
     prints: async ({ input }) => {
       try {
-        console.log(input)
         return PrintsModule.handler(input)
       } catch (err) {
         console.log(err)

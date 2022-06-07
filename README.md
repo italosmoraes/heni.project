@@ -1,5 +1,5 @@
 ## Heni coding task - Italo Moraes
-
+### The task
 Using the api available at https://github.com/harvardartmuseums/api-docs,
 create a basic api and front end app which does the following:
 
@@ -27,6 +27,10 @@ This is your api key: `c28e4be0-4c0e-11ea-90d6-25d9a9fe80fc`
 - A nodejs express server exposing a graphql endpoint
 - The server only resolves the items classified as Prints from the harvardartmuseums api
 - A few notes on TODOs and improvements are written across the codebase
+- As seen from the commits, development was done from the ground up starting with express and building up to test the harvard api and then introduce graphql. With this focus on the e2e, the mindset was not to write tests first, it was to see a minimal e2e solution working - while also learning about the harvard api usage/features - and then improve on it, including tests.
+
+- The web app is a simple Feed app, including pagination capabilities and using graphql
+- No FE components tests are included
 
 ### Environment
 ---------------
@@ -100,6 +104,8 @@ On the API:
 - Find a better way to define `outputFields` for each resource type
 - Improve how one resolves the types coming from the harvard api
 - better handle incorrect FE input. At the moment the api just injects defaults
+- Resolve correlated items like `people`, which is a field for `Object`, and make that available to the FE
+- Further look at errors that could happen in fetching the harvard api, and properly handling them
 
 On the web-app:
 - better align the types with the api one. maybe making a shared types library
