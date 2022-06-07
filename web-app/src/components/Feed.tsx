@@ -20,6 +20,7 @@ const LoadMoreBtn = styled.button`
 `
 
 const LOADING_LIMIT = 10
+
 export const Feed = () => {
   const { loading, error, data, refetch } = useQuery<PrintsResponse>(PRINTS_QUERY, {
     variables: {
@@ -30,11 +31,15 @@ export const Feed = () => {
     }
   })
   const [nextPage, setNextPage] = useState(1)
+  const [hasNextPage, setHasNextPage] = useState(false)
   const [feedItems, setFeedItems] = useState<any[]>([]) // TODO improve type for feed items
 
   useEffect(() => {
     if (data?.prints && nextPage !== data?.prints.info.pages) {
       setNextPage(data.prints.info.page + 1)
+      setHasNextPage(true)
+    } else {
+      setHasNextPage(false)
     }
 
     if (data?.prints.records) {
@@ -63,9 +68,11 @@ export const Feed = () => {
   return (
     <FeedContainer>
       {feedItems && feedItems.map((item, idx) => <FeedItem key={idx} item={item} />)}
-      <LoadMoreBtn name="load-more" onClick={() => loadMore()}>
-        ...LOAD MORE
-      </LoadMoreBtn>
+      {hasNextPage && (
+        <LoadMoreBtn name="load-more" onClick={() => loadMore()}>
+          ...LOAD MORE
+        </LoadMoreBtn>
+      )}
     </FeedContainer>
   )
 }
