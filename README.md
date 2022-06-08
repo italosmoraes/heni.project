@@ -1,4 +1,5 @@
 ## Heni coding task - Italo Moraes
+
 ### The task
 Using the api available at https://github.com/harvardartmuseums/api-docs,
 create a basic api and front end app which does the following:
@@ -27,7 +28,7 @@ This is your api key: `c28e4be0-4c0e-11ea-90d6-25d9a9fe80fc`
 - A nodejs express server exposing a graphql endpoint
 - The server only resolves the items classified as Prints from the harvardartmuseums api
 - A few notes on TODOs and improvements are written across the codebase
-- As seen from the commits, development was done from the ground up starting with express and building up to test the harvard api and then introduce graphql. With this focus on the e2e, the mindset was not to write tests first, it was to see a minimal e2e solution working - while also learning about the harvard api usage/features - and then improve on it, including tests.
+- As seen from the commits, development was done from the ground up starting with express and building up to test the harvard api and then introduce graphql. With this focus on the e2e, the mindset was it was to see a minimal e2e solution working - while also learning about the harvard api usage/features - and then improve on it, including tests.
 
 - The web app is a simple Feed app, including pagination capabilities and using graphql
 - No FE components tests are included
@@ -49,6 +50,7 @@ This project was built using:
 1. Install npm
 2. Install npx
 
+
 On the command line:
 ```
 # compile typescript
@@ -58,6 +60,10 @@ npx tsc
 #### API:
 ----
 ...while in the api folder
+
+```
+nvm use
+```
 
 ```
 yarn
@@ -70,6 +76,10 @@ yarn dev
 #### Web-App:
 ----
 ...while in the web-app folder
+
+```
+nvm use
+```
 
 ```
 yarn
@@ -107,6 +117,12 @@ On the API:
 - Resolve correlated items like `people`, which is a field for `Object`, and make that available to the FE
 - Further look at errors that could happen in fetching the harvard api, and properly handling them
 
+Tests:
+- they are currently hitting an external API, which is not ideal. But kept like this due to the nature of the task.
+- the above means that we are also bound to changes in the external API, which could break the tests. So this is a blessing and a curse.
+- mocking the response from axios to return the expected records would be anothe way to go
+- add tests to verify data models returned from external api and to validate the hydration of records before responding to the request.
+
 On the web-app:
 - better align the types with the api one. maybe making a shared types library
 - better handling of the FeedItem size as per screen sizes and image sizes
@@ -121,4 +137,4 @@ On the web-app:
 
 (!) the description of 'Prints' does not relate to anything in the harvard lib documentation, unless on searches through the available query fields within the resource types to find which ones have that option.This makes it confusing since one need to start infering if what is meant is some of the categories available, which may be called Print because they have images, or any of the `resource types` available are considered prints
 
-[] Time spent: 2hs setup, 6hs from node express with routes version to the a graphql version, 1.5hs refining graphql endpoint, about 4hs on building the Feed
+(!) Time spent: 2hs setup, 6hs from node express with routes version to the a graphql version, 1.5hs refining graphql endpoint, about 4hs on building the Feed, 1.5hs on adding tests and wrapping up the project

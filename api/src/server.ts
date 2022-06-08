@@ -4,7 +4,7 @@ import { schema } from './graphql/schema'
 import { PrintsModule } from './modules/Prints/Prints'
 import cors from 'cors'
 
-const port = 3001
+const port = process.env.PORT || 3001
 const server = express()
 
 server.use(cors())
@@ -13,7 +13,7 @@ server.use(
   '/graphql',
   graphqlHTTP((request, response, params) => ({
     schema,
-    rootValue: PrintsModule.resolver,
+    rootValue: new PrintsModule().resolvers,
     graphiql: true,
     context: {
       request,

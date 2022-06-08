@@ -19,7 +19,7 @@ const config: Config.InitialOptions = {
   coverageDirectory: './coverage',
   testEnvironment: 'node',
   roots: ['<rootDir>/src/'],
-  testPathIgnorePatterns: [],
+  testPathIgnorePatterns: ['<rootDir>/.*/(mock.*)', '<rootDir>/.*/(helper.*)'],
   moduleNameMapper: {},
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts']
 }
