@@ -73,6 +73,10 @@ yarn
 yarn dev
 ```
 
+Suggestion on testing the api directly:
+1. download https://insomnia.rest/
+2. Create new request, copy and past curl from 'graphql-query-curl.txt' file 
+
 #### Web-App:
 ----
 ...while in the web-app folder

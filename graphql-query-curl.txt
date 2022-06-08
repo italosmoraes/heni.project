@@ -1,0 +1,4 @@
+curl --request POST \
+  --url http://localhost:3001/graphql \
+  --header 'Content-Type: application/json' \
+  --data '{"query":"query Prints($input: PrintsInput!) {\n\tprints(input: $input) {\n\t\tinfo {\n\t\t\ttotalrecords\n\t\t\ttotalrecordsperquery\n\t\t\tpages\n\t\t\tpage\n\t\t\tnext\n\t\t}\n\t\trecords\n\t\taggregations\n\t}\n}","variables":{"input":{"limit":10,"page":7}},"operationName":"Prints"}'
