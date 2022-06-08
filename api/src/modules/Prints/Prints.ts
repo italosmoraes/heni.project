@@ -1,8 +1,6 @@
-import { Request } from 'express'
 import axios from 'axios'
 import { API_KEY, PRINTS_API } from '../../../config/constants'
 import { ResourceTypes } from './types/ResourceTypes'
-import { PrintsInput } from './types/inputTypes'
 
 const CLASSIFICATION = 'Prints'
 

@@ -134,7 +134,8 @@ On the web-app:
 
 ### Notes on the task
 
-
 (!) the description of 'Prints' does not relate to anything in the harvard lib documentation, unless on searches through the available query fields within the resource types to find which ones have that option.This makes it confusing since one need to start infering if what is meant is some of the categories available, which may be called Print because they have images, or any of the `resource types` available are considered prints
 
-(!) Time spent: 2hs setup, 6hs from node express with routes version to the a graphql version, 1.5hs refining graphql endpoint, about 4hs on building the Feed, 1.5hs on adding tests and wrapping up the project
+(!) Time spent:
+I really took my time to setup everything from scratch, including TS and node (express) and building up the features one by one.
+2hs setup, 6hs from node express with routes version to the a graphql version, 1.5hs refining graphql endpoint, about 4hs on building the Feed, 1.5hs on adding tests and wrapping up the project
