@@ -7,6 +7,7 @@ import { ApolloProvider } from '@apollo/client'
 import { apolloClient } from './clients/apiClient'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+
 root.render(
   <React.StrictMode>
     <ApolloProvider client={apolloClient}>

@@ -58,21 +58,25 @@ export const Feed = () => {
 
   if (loading) return <p>Loading...</p>
 
-  if (error)
+  if (error) {
     return (
       <>
         <p>An error has ocurred: </p>
-        {error}
+        {JSON.stringify(error.message)}
       </>
     )
+  }
+
   return (
-    <FeedContainer>
-      {feedItems && feedItems.map((item, idx) => <FeedItem key={idx} item={item} />)}
-      {hasNextPage && (
-        <LoadMoreBtn name="load-more" onClick={() => loadMore()}>
-          ...LOAD MORE
-        </LoadMoreBtn>
-      )}
-    </FeedContainer>
+    <>
+      <FeedContainer>
+        {feedItems && feedItems.map((item, idx) => <FeedItem key={idx} item={item} />)}
+        {hasNextPage && (
+          <LoadMoreBtn name="load-more" onClick={() => loadMore()}>
+            ...LOAD MORE
+          </LoadMoreBtn>
+        )}
+      </FeedContainer>
+    </>
   )
 }

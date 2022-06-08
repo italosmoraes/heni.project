@@ -50,11 +50,15 @@ This project was built using:
 1. Install npm
 2. Install npx
 
-
 On the command line:
 ```
 # compile typescript
 npx tsc
+```
+
+While on the main folder
+```
+yarn
 ```
 
 #### API:
@@ -79,7 +83,10 @@ Suggestion on testing the api directly:
 
 #### Web-App:
 ----
+...with the API running locally
+and
 ...while in the web-app folder
+
 
 ```
 nvm use
